@@ -54,7 +54,6 @@ func (l *layer) Listen(network string, address string) error {
 				buffer.Write(line)
 
 				if strings.HasSuffix(buffer.String(), "\r\n\r\n") {
-					fmt.Println(buffer.String())
 					msg, err := sip.Parse(buffer.Bytes())
 					if err != nil {
 						panic(err)
