@@ -1029,7 +1029,7 @@ func getString(sl []byte, from, to int) string {
 	return string(sl[from:to])
 }
 
-// Finds the first valid Seperate or notes its type
+// Finds the first valid separate or notes its type
 func indexSep(s []byte) (int, byte) {
 	for i := 0; i < len(s); i++ {
 		if s[i] == ':' {
