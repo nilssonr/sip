@@ -2,7 +2,6 @@ package sip
 
 import (
 	"bytes"
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -71,11 +70,6 @@ func Parse(b []byte) (Message, error) {
 		}
 
 	}
-
-	fmt.Println(msg.Allow())
-	fmt.Println(msg.CSeq())
-
-	fmt.Printf("%+v\n", msg)
 	return msg, nil
 }
 

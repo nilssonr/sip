@@ -8,6 +8,7 @@ import (
 // type Message interface {}
 
 type Message interface {
+	Method() string
 	CSeq() (*CSeq, bool)
 	Allow() (*Allow, bool)
 
@@ -32,6 +33,10 @@ func newMessage(rl *RequestLine) Message {
 			mu:      sync.RWMutex{},
 		},
 	}
+}
+
+func (msg defaultMessage) Method() string {
+	return msg.method
 }
 
 // Allow implements Message.

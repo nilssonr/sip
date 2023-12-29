@@ -1,61 +1,26 @@
 package main
 
 import (
-	"bufio"
-	"bytes"
-	"errors"
 	"fmt"
-	"io"
-	"net"
-	"strings"
+	"log/slog"
 
-	"github.com/nilssonr/sip/sip"
+	"github.com/nilssonr/sip/transport"
 )
 
 func main() {
-	ltcp, err := net.Listen("tcp4", "0.0.0.0:5060")
-	if err != nil {
-		panic(err)
-	}
-	defer ltcp.Close()
 
-	for {
-		conn, err := ltcp.Accept()
-		if err != nil {
-			panic(err)
+	slog.Info("baws")
+	slog.Group("hey")
+	slog.Info("baw")
+
+	transl := transport.NewLayer()
+	go func() {
+		for msg := range transl.Messages() {
+			fmt.Println("Got message")
+			fmt.Printf("Method: %s\n", msg.Method())
 		}
-		go handleClient(conn)
-	}
-}
+	}()
+	transl.Listen("tcp", "0.0.0.0:5060")
 
-func handleClient(conn net.Conn) {
-	reader := bufio.NewReader(conn)
-	buffer := bytes.Buffer{}
-
-	for {
-		line, err := reader.ReadBytes('\n')
-		if err != nil {
-			if errors.Is(err, io.EOF) {
-				fmt.Println("client hung up")
-				break
-			}
-
-			panic(err)
-		}
-
-		buffer.Write(line)
-
-		if strings.HasSuffix(buffer.String(), "\r\n\r\n") {
-			fmt.Println(buffer.String())
-			msg, err := sip.Parse(buffer.Bytes())
-			if err != nil {
-				panic(err)
-			}
-
-			fmt.Printf("%+v\n", msg)
-			break
-		}
-	}
-
-	// handleClient(conn)
+	select {}
 }
