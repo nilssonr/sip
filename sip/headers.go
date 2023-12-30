@@ -184,39 +184,6 @@ type From struct {
 
 func (From) Name() string { return "From" }
 
-type To struct {
-	Scheme      string
-	DisplayName string
-	User        string
-	Host        string
-	Port        string
-	Tag         string
-	UserType    string
-}
-
-func (To) Name() string { return "To" }
-
-type Via struct {
-	Transport string
-	Host      string
-	Port      string
-	Branch    string
-	Rport     string
-	Maddr     string
-	TTL       string
-	Received  string
-}
-
-func (Via) Name() string { return "Via" }
-
-type UserAgent string
-
-func (UserAgent) Name() string { return "User-Agent" }
-
-type Server string
-
-func (Server) Name() string { return "Server" }
-
 type MaxForwards uint8
 
 func (MaxForwards) Name() string { return "Max-Forwards" }
@@ -242,18 +209,127 @@ type Expires uint32
 
 func (Expires) Name() string { return "Expires" }
 
+type ContentEncoding string
+
+func (ContentEncoding) Name() string { return "Content-Encoding" }
+
+type ContentLanguage string
+
+func (ContentLanguage) Name() string { return "Content-Language" }
+
+type Date string
+
+func (Date) Name() string { return "Date" }
+
+type ErrorInfo string
+
+func (ErrorInfo) Name() string { return "Error-Info" }
+
+type InReplyTo string
+
+func (InReplyTo) Name() string { return "In-Reply-To" }
+
+type MinExpires string
+
+func (MinExpires) Name() string { return "Min-Expires" }
+
+type MimeVersion string
+
+func (MimeVersion) Name() string { return "Mime-Version" }
+
+type Organization string
+
+func (Organization) Name() string { return "Organization" }
+
+type Priority string
+
+func (Priority) Name() string { return "Priority" }
+
+type ProxyAuthenticate string
+
+func (ProxyAuthenticate) Name() string { return "Proxy-Authenticate" }
+
+type ProxyAuthorization string
+
+func (ProxyAuthorization) Name() string { return "Proxy-Authorization" }
+
+type ProxyRequire string
+
+func (ProxyRequire) Name() string { return "Proxy-Require" }
+
 type RecordRoute string
 
 func (RecordRoute) Name() string { return "Record-Route" }
+
+type ReplyTo string
+
+func (ReplyTo) Name() string { return "Reply-To" }
+
+type Require string
+
+func (Require) Name() string { return "Require" }
+
+type RetryAfter string
+
+func (RetryAfter) Name() string { return "Retry-After" }
 
 type Route string
 
 func (Route) Name() string { return "Route" }
 
+type Server string
+
+func (Server) Name() string { return "Server" }
+
+type Subject string
+
+func (Subject) Name() string { return "Subject" }
+
 type Supported string
 
 func (Supported) Name() string { return "Supported" }
 
-type Require string
+type Timestamp string
 
-func (Require) Name() string { return "Require" }
+func (Timestamp) Name() string { return "Timestamp" }
+
+type To struct {
+	Scheme      string
+	DisplayName string
+	User        string
+	Host        string
+	Port        string
+	Tag         string
+	UserType    string
+}
+
+func (To) Name() string { return "To" }
+
+type Unsupported string
+
+func (Unsupported) Name() string { return "Unsupported" }
+
+type UserAgent string
+
+func (UserAgent) Name() string { return "User-Agent" }
+
+type Via struct {
+	Transport string
+	Host      string
+	Port      string
+	Branch    string
+	Rport     string
+	Maddr     string
+	TTL       string
+	Received  string
+}
+
+func (Via) Name() string { return "Via" }
+
+type Warning string
+
+func (Warning) Name() string { return "Warning" }
+
+type WWWAuthenticate string
+
+func (WWWAuthenticate) Name() string { return "WWW-Authenticate" }
